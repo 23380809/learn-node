@@ -1,2 +1,8 @@
 - Explain the order of execution in terms of the event loop for eventloop/immediate.js.
 - Will the order of execution change if timeout is changed to 0? Why or why not?
+
+The if (err) console.log('Error') would be executed first. Then console.log('I was scheduled to run immediately');
+would run next, followed by console.log(`${delay}ms have passed since I was scheduled`);
+
+The reason is setImmediate is executed after the current event loop, and setTimeout is executed after the current event loop, but before the next event loop.
+If we change the timeout to 0, the order of execution would not change. The reason is setTimeout with a timeout of 0 is not actually 0ms. It is 1ms. This is because the minimum timeout for setTimeout is 1ms. Therefore, the order of execution would not change.

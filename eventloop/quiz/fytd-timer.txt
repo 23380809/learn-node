@@ -1,1 +1,11 @@
 - In eventloop/timer.js, what will be the order of execution? Briefly explain the order of execution w.r.t the event loop phases.
+
+1. foo
+2. baz
+3. foo
+4. baz
+5. 2 bar
+6. 1 bar
+
+
+setTimerout is a non-blocking function, so it will be executed in the next phase of the event loop. The order of execution will be as follows:

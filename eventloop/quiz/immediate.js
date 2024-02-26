@@ -14,10 +14,10 @@ fs.readFile('./data/test.txt', function(err, data) {
     const delay = Date.now() - timeoutScheduled;
 
     console.log(`${delay}ms have passed since I was scheduled`);
-  }, 5);
+  }, 0);
 
   setImmediate(() => {
-    console.log('I was scheduled to run immediately');
+    console.log('I was scheduled to run immediately'); // goes to check phase
   });
 });
 
